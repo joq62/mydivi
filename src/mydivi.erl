@@ -38,6 +38,7 @@
 %% --------------------------------------------------------------------
 
 -export([
+	 divi/2,
 	 ping/0,
 	start/0,
 	stop/0
@@ -58,8 +59,8 @@
 start()-> gen_server:start_link({local, ?SERVER}, ?SERVER, [], []).
 stop()-> gen_server:call(?SERVER, {stop},infinity).
 
-add(A,B)-> 
-    gen_server:call(?SERVER, {add,A,B},infinity).
+divi(A,B)-> 
+    gen_server:call(?SERVER, {divi,A,B},infinity).
 
 %%---------------------------------------------------------------
 -spec ping()-> {atom(),node(),module()}|{atom(),term()}.
@@ -99,8 +100,8 @@ init([]) ->
 %%          {stop, Reason, Reply, State}   | (terminate/2 is called)
 %%          {stop, Reason, State}            (aterminate/2 is called)
 %% --------------------------------------------------------------------
-handle_call({add,A,B},_From,State) ->
-    Reply=A+B,
+handle_call({divi,A,B},_From,State) ->
+    Reply=A/B,
     {reply, Reply, State};
 
 handle_call({ping},_From,State) ->
