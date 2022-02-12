@@ -10,6 +10,5 @@
 {mod, {mydivi_app,[]}},
 {start_phases, []},
 {git_path,"https://github.com/joq62/mydivi.git"},
-{env,[]},
-{hosts_needed,[]}
+{constraints,[]}  %{hw,hw_spec}|{port,port_num}
 ]}.
